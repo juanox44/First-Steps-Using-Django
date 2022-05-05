@@ -15,11 +15,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
-
-from petclub.views import HelloWorld
+from django.urls import path
+from django.conf.urls import include
+from petclub.views import PersonAPIView, PetAPIView
 
 urlpatterns = [
-    path('hi', HelloWorld.as_view(), name="helloworld"),
     path('api-auth/', include('rest_framework.urls')),
+    path('pets/', PetAPIView.as_view(), name="holamundo"),
+    path('persons/', PersonAPIView.as_view(), name="holamigue"),
 ]
+
